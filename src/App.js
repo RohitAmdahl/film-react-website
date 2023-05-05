@@ -1,24 +1,25 @@
 import React from "react";
 import { useEffect } from "react";
-//Here is your key: 192c82c3
-// const url = `https://www.omdbapi.com?apikey=192c82c3`;
+// import searchIcon from "./search.svg";
+//api url
 const url = `http://www.omdbapi.com/?apikey=192c82c3`;
 
+// calling Api async function
 const App = () => {
   const searchMovies = async (title) => {
     const response = await fetch(`${url}&s=${title}`);
     const data = await response.json();
     console.log(data.Search);
   };
-
+  // useEffect hook for calling api
   useEffect(() => {
-    searchMovies("Spiderman");
+    searchMovies("Batman");
   }, []);
 
   return (
-    <div className="App">
-      <h1>app</h1>
-    </div>
+    <>
+      <h1 className="text-3xl font-bold underline">Hello world!</h1>
+    </>
   );
 };
 
