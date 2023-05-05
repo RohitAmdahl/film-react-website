@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import "./index.css";
 import Moviecard from "./movieCard";
 import SearchIcon from "./search.svg";
-import SearchBar from "./components/searchBar";
+
 //api url
 const url = `http://www.omdbapi.com/?apikey=192c82c3`;
 
@@ -11,7 +11,7 @@ const url = `http://www.omdbapi.com/?apikey=192c82c3`;
 
 const App = () => {
   const [movies, setmovies] = useState([]);
-
+  const [searchTerm, setSearchTerm] = useState("");
   const searchMovies = async (title) => {
     const response = await fetch(`${url}&s=${title}`);
     const data = await response.json();
@@ -30,22 +30,22 @@ const App = () => {
           MovieStudio
         </h1>
       </div>
+
       <div className="py-5">
-        <SearchBar />
-        {/* <div className="flex justify-center py-8">
+        <div className="flex justify-center items-center gap-3 py-8">
           <input
             className=" border border-green-800 rounded-full w-1/2  py-4 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-700 text-md shadow-lg"
             placeholder="Search for movies"
-            value="superman"
-            onChange={() => {}}
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
           />
           <img
-            className="w-10 h-10"
+            className="w-10 h-10 cursor-pointer"
             src={SearchIcon}
             alt="search icon"
-            onCanPlay={() => {}}
+            onClick={() => searchMovies(searchTerm)}
           />
-        </div> */}
+        </div>
         {movies?.length > 0 ? (
           <div className="grid grid-cols-1 gap-10 mx-auto max-w-4xl md:grid-cols-2 md:gap-5 lg:grid-cols-3 lg:gap-8">
             {movies.map((movie) => (
@@ -53,7 +53,9 @@ const App = () => {
             ))}
           </div>
         ) : (
-          <div className="">No movies found </div>
+          <div className="mx-auto text-center text-4xl font-bold">
+            No movies found
+          </div>
         )}
       </div>
     </>
