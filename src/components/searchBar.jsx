@@ -14,7 +14,7 @@ const SearchBar = () => {
         className="w-10 h-10 shadow-2xl"
         src={SearchIcon}
         alt="search icon"
-        onCanPlay={() => {}}
+        onchange={() => {}}
       />
     </div>
   );
