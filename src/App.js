@@ -1,19 +1,23 @@
 import React from "react";
-
-const Person = () => {
-  return (
-    <>
-      <h1>Name:John</h1>
-      <h2>Last Name: Doe</h2>
-      <h2>age: 30</h2>
-    </>
-  );
-};
+import { useEffect } from "react";
+//Here is your key: 192c82c3
+// const url = `https://www.omdbapi.com?apikey=192c82c3`;
+const url = `http://www.omdbapi.com/?apikey=192c82c3`;
 
 const App = () => {
+  const searchMovies = async (title) => {
+    const response = await fetch(`${url}&s=${title}`);
+    const data = await response.json();
+    console.log(data.Search);
+  };
+
+  useEffect(() => {
+    searchMovies("Spiderman");
+  }, []);
+
   return (
     <div className="App">
-      <Person />
+      <h1>app</h1>
     </div>
   );
 };
