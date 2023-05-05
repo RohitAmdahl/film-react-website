@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import "./index.css";
 import Moviecard from "./movieCard";
 import SearchIcon from "./search.svg";
+import SearchBar from "./components/searchBar";
 //api url
 const url = `http://www.omdbapi.com/?apikey=192c82c3`;
 
@@ -30,7 +31,8 @@ const App = () => {
         </h1>
       </div>
       <div className="py-5">
-        <div className="flex justify-center py-8">
+        <SearchBar />
+        {/* <div className="flex justify-center py-8">
           <input
             className=" border border-green-800 rounded-full w-1/2  py-4 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-700 text-md shadow-lg"
             placeholder="Search for movies"
@@ -43,7 +45,7 @@ const App = () => {
             alt="search icon"
             onCanPlay={() => {}}
           />
-        </div>
+        </div> */}
         {movies?.length > 0 ? (
           <div className="grid grid-cols-1 gap-10 mx-auto max-w-4xl md:grid-cols-2 md:gap-5 lg:grid-cols-3 lg:gap-8">
             {movies.map((movie) => (
