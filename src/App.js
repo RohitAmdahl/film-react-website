@@ -49,7 +49,7 @@ const App = () => {
         {movies?.length > 0 ? (
           <div className="grid grid-cols-1 gap-10 mx-auto max-w-4xl md:grid-cols-2 md:gap-5 lg:grid-cols-3 lg:gap-8">
             {movies.map((movie) => (
-              <Moviecard movie={movie} />
+              <Moviecard key={movie.Title} movie={movie} />
             ))}
           </div>
         ) : (
